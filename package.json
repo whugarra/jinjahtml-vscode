@@ -512,6 +512,18 @@
           ".rs.jinja2"
         ],
         "configuration": "./language-configuration.json"
+      },
+      {
+        "id": "jinja-sas",
+        "aliases": [
+          "Jinja Sas"
+        ],
+        "extensions": [
+          ".sas.j2",
+          ".sas.jinja",
+          ".sas.jinja2"
+        ],
+        "configuration": "./language-configuration.json"
       }
     ],
     "htmlLanguageParticipants": [
@@ -660,6 +672,11 @@
         "language": "jinja-rust",
         "scopeName": "source.rust.jinja",
         "path": "./syntaxes/jinja-rust.tmLanguage.json"
+      },
+      {
+        "language": "jinja-sas",
+        "scopeName": "source.sas.jinja",
+        "path": "./syntaxes/jinja-sas.tmLanguage.json"
       }
     ],
     "snippets": [
@@ -667,6 +684,22 @@
         "language": "jinja-html",
         "scopeName": "text.html.jinja",
         "path": "./snippets/django-snippets.json"
+      },
+      {
+        "language": "jinja-sas",
+        "path": "./snippets/sas-snippets.json"
+      },
+      {
+        "language": "jinja-sas",
+        "path": "./snippets/sas-function-snippets.json"
+      },
+      {
+        "language": "jinja-sas",
+        "path": "./snippets/sas-proc-snippets.json"
+      },
+      {
+        "language": "jinja-sas",
+        "path": "./snippets/jinja-snippets.json"
       }
     ],
     "breakpoints": [
@@ -750,6 +783,9 @@
       },
       {
         "language": "jinja-rust"
+      },
+      {
+        "language": "jinja-sas"
       }
     ]
   }
