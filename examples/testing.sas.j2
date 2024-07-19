@@ -1,4 +1,58 @@
-{% if condition %}
-    proc import data="";
-    run;
-{% endif %}
+*************************************************************************
+*              PROTOCOL:
+*               PURPOSE:
+*           INPUT FILES:
+*          OUTPUT FILES:
+*           USAGE NOTES:
+*************************************************************************
+
+*************************************************************************;
+*************************************************************************;
+** - Programming Note - *************************************************
+*
+*          PROGRAM NAME: @tableFrameProperties.TableName
+*                 TITLE: @Raw(titleProperties.TitleName);
+*           SAS VERSION: 9.4
+*                AUTHOR: @Environment.UserName
+*          DATE CREATED: @DateTime.Now.ToShortDateString();
+* PRODUCTION PROGRAMMER:
+*
+****** listing all your used macros files separated by blank space ******;
+libname ADaM "W:\workspace\git\Jason\Jason\bin\Debug\JS001\CT28\IA\PG\Statistical Programs\ADaM\Output";
+Title;
+Footnote;
+%let TableName=@Model.TableName;
+%let title1=@Model.Sections[0].TitleNum;
+%let title2=@Model.Sections[0].TitleName;
+%let title3=@Model.Sections[0].PopLabel;
+
+/**/
+/* Header Section*/
+/**/
+
+/*dsRef*/
+data dsRef;
+	set adam.adsl;
+	where Popfl='Y';
+	proc sort;
+	by USUBJID;
+run;
+
+
+proc sql noprint;
+	create table @variable.VariableC as a select distinct @if
+		(variable.VariableN.Length > 0) {@variable.VariableN, }
+		@variable.VariableC from dsin@(sectionNum);
+quit;
+
+PROC IMPORT
+	datafile=""
+	out=
+	dbms=csv replace;
+	creat
+RUN;
+
+
+
+%macrosa dasda;
+%mend;

@@ -1,239 +1,239 @@
 {
     "proc sql":{
-        "prefix": "sql",
+        "prefix": "proc sql",
         "body":[
-            "PROC SQL noprint;",
+            "proc sql noprint;",
             "\tcreate table $1 as",
             "\tselect $2",
             "\tfrom $3;",
-            "QUIT;\n"
+            "quit;\n"
         ],
         "description": "proc sql"
     },
     "proc contents":{
-        "prefix": "contents",
+        "prefix": "proc contents",
         "body":[
-            "PROC CONTENTS data=$1;",
-            "RUN;\n"
+            "proc contents data=$1;",
+            "run;\n"
         ],
         "description": "proc contents"
     },
     "proc datasets":{
-        "prefix": "datasets",
+        "prefix": "proc datasets",
         "body":[
-            "PROC DATASETS lib=$1 memtype=data nolist nodetails kill",
-            "RUN;\nQUIT;\n"
+            "proc datasets lib=$1 memtype=data nolist nodetails kill",
+            "run;\nquit;\n"
         ],
         "description": "proc datasets"
     },
     "proc import xlsx":{
-        "prefix": "import xlsx",
+        "prefix": "proc import xlsx",
         "body":[
-            "PROC IMPORT",
+            "proc import",
                 "\tdatafile=\"$1\"",
                 "\tout=$2",
                 "\tdbms=xlsx replace",
                 "\tsheet=\"$3\";",
-            "RUN;\n"
+            "run;\n"
         ],
         "description": "proc import xlsx"
     },
     "proc import csv":{
-        "prefix": "import csv",
+        "prefix": "proc import csv",
         "body":[
-            "PROC IMPORT",
+            "proc import",
                 "\tdatafile=\"$1\"",
                 "\tout=$2",
                 "\tdbms=csv replace;",
-            "RUN;\n"
+            "run;\n"
         ],
         "description": "proc import csv"
     },
     "proc export":{
-        "prefix": "export",
+        "prefix": "proc export",
         "body":[
-            "PROC EXPORT data=$1 outfile=\"$2\" DBMS=$3 replace;",
-            "\tputnames=NO;",
-            "RUN;\n"
+            "proc export data=$1 outfile=\"$2\" dbms=$3 replace;",
+            "\tputnames=no;",
+            "run;\n"
         ],
         "description": "proc export"
     },
     "proc print":{
-        "prefix": "print",
+        "prefix": "proc print",
         "body":[
-            "PROC PRINT data=$1;",
-            "RUN;\n"
+            "proc print data=$1;",
+            "run;\n"
         ],
         "description": "proc print"
     },
     "proc rank":{
-        "prefix": "rank",
+        "prefix": "proc rank",
         "body":[
-            "PROC RANK data=$1 out=$2;",
+            "proc rank data=$1 out=$2;",
             "\tvar $3;",
             "\tranks $4;",
-            "RUN;\n"
+            "run;\n"
         ],
         "description": "proc rank"
     },
     "proc freq":{
-        "prefix": "freq",
+        "prefix": "proc freq",
         "body":[
-            "PROC FREQ data=$1;",
+            "proc freq data=$1;",
             "\ttables $2/nocol nocum norow;",
-            "RUN;\n"
+            "run;\n"
         ],
         "description": "proc freq"
     },
     "proc corr":{
-        "prefix": "corr",
+        "prefix": "proc corr",
         "body":[
-            "PROC CORR data=$1;",
+            "proc corr data=$1;",
             "\tvar $2;",
-            "RUN;\n"
+            "run;\n"
         ],
         "description": "proc freq"
     },
     "proc univariate":{
-        "prefix": "univariate",
+        "prefix": "proc univariate",
         "body":[
-            "PROC UNIVARIATE data=$1 noprint;",
+            "proc univariate data=$1 noprint;",
             "\tvar $2;",
-            "RUN;\n"
+            "run;\n"
         ],
         "description": "proc univariate"
     },
     "proc anova":{
-        "prefix": "anova",
+        "prefix": "proc anova",
         "body":[
-            "PROC ANOVA data=$1;",
+            "proc anova data=$1;",
             "\tclass $2;",
             "\tmodel $3;",
-            "RUN;\n"
+            "run;\n"
         ],
         "description": "proc anova"
     },
     "proc cluster":{
-        "prefix": "cluster",
+        "prefix": "proc cluster",
         "body":[
-            "PROC CLUSTER data=$1 method=${2|AVERAGE,CENTROID,COMPLETE,DENSITY,EML,FLEXIBLE,MCQUITTY,MEDIAN,SINGLE,TWOSTAGE,WARD|};",
+            "proc cluster data=$1 method=${2|average,centroid,complete,density,eml,flexible,mcquitty,median,single,twostage,ward|};",
             "\tvar $3;",
             "\tid $4;",
-            "RUN;\n"
+            "run;\n"
         ],
         "description": "proc cluster"
     },
     "proc factor":{
-        "prefix": "factor",
+        "prefix": "proc factor",
         "body":[
-            "PROC FACTOR data=$1 simple corr;",
-            "RUN;\n"
+            "proc factor data=$1 simple corr;",
+            "run;\n"
         ],
         "description": "proc factor"
     },
     "proc surveyselect":{
-        "prefix": "surveyselect",
+        "prefix": "proc surveyselect",
         "body":[
-            "PROC SURVEYSELECT data=$1 out=$2 method=${3|BERNOULLI,POISSON,PPS,BREWER,MURTHY,SAMPFORD,CHROMY,CHROMY,SRS,URS|};",
+            "proc surveyselect data=$1 out=$2 method=${3|bernoulli,poisson,pps,brewer,murthy,sampford,chromy,chromy,srs,urs|};",
             "\tstrata $4;",
-            "RUN;\n"
+            "run;\n"
         ],
         "description": "proc surveyselect"
     }, 
     "proc reg":{
-        "prefix": "reg",
+        "prefix": "proc reg",
         "body":[
-            "PROC REG data=$1;",
+            "proc reg data=$1;",
             "\tmodel $2;",
-            "RUN;\n"
+            "run;\n"
         ],
         "description": "proc reg"
     },
     "proc logistic":{
-        "prefix": "logistic",
+        "prefix": "proc logistic",
         "body":[
-            "PROC LOGISTIC data=$1;",
+            "proc logistic data=$1;",
             "\tclass $2;",
             "\tmodel $3;",
-            "RUN;\n"
+            "run;\n"
         ],
         "description": "proc logistic"
     },
     "proc transpose":{
-        "prefix": "transpose",
+        "prefix": "proc transpose",
         "body":[
-            "PROC TRANSPOSE data=$1 out=$2;",
+            "proc transpose data=$1 out=$2;",
             "\tby $3;",
             "\tvar $4;",
-            "RUN;\n"
+            "run;\n"
         ],
         "description": "proc transpose"
     },
     "proc lifetest":{
-        "prefix": "lifetest",
+        "prefix": "proc lifetest",
         "body":[
-            "PROC LIFETEST data=$1 outtest=$2;",
+            "proc lifetest data=$1 outtest=$2;",
             "\ttime $3;",
             "\tstrata $4;",
-            "RUN;\n"
+            "run;\n"
         ],
         "description": "proc lifetest"
     },
     "proc fastclus":{
-        "prefix": "fastclus",
+        "prefix": "proc fastclus",
         "body":[
-            "PROC FASTCLUS data=$1 out=$2 maxc=$3 maxiter=$4;",
+            "proc fastclus data=$1 out=$2 maxc=$3 maxiter=$4;",
             "\tvar $5;",
-            "RUN;\n"
+            "run;\n"
         ],
         "description": "proc fastclus"
     },
     "proc glm":{
-        "prefix": "glm",
+        "prefix": "proc glm",
         "body":[
-            "PROC GLM data=$1;",
+            "proc glm data=$1;",
             "\tclass $2;",
             "\tmodel $3;",
-            "RUN;\n"
+            "run;\n"
         ],
         "description": "proc glm"
     },
     "proc mixed":{
-        "prefix": "mixed",
+        "prefix": "proc mixed",
         "body":[
-            "PROC MIXED data=$1;",
+            "proc mixed data=$1;",
             "\tclass $2;",
             "\tmodel $3;",
             "\trandom $4;",
-            "RUN;\n"
+            "run;\n"
         ],
         "description": "proc mixed"
     },
     "proc npar1way":{
-        "prefix": "npar1way",
+        "prefix": "proc npar1way",
         "body":[
-            "PROC NPAR1WAY data=$1;",
+            "proc npar1way data=$1;",
             "\tclass $2;",
             "\tvar $3;",
-            "RUN;\n"
+            "run;\n"
         ],
         "description": "proc npar1way"
     },
     "proc ttest":{
-        "prefix": "ttest",
+        "prefix": "proc ttest",
         "body":[
-            "PROC TTEST data=$1;",
+            "proc ttest data=$1;",
             "\tclass $2;",
             "\tvar $3;",
-            "RUN;\n"
+            "run;\n"
         ],
         "description": "proc ttest"
     },
     "proc sgrender":{
-        "prefix": "sgrender",
+        "prefix": "proc sgrender",
         "body":[
-            "PROC SGRENDER data=$1 template=$2;",
-            "RUN;\n"
+            "proc sgrender data=$1 template=$2;",
+            "run;\n"
         ],
         "description": "proc sgrender"
     }

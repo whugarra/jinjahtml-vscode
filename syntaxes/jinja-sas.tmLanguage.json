@@ -48,12 +48,12 @@
       "end": ";",
       "beginCaptures": {
         "0": {
-          "name": "storage.type.class.sas"
+          "name": "support.class.character-class.sas"
         }
       },
       "patterns": [
         {
-          "name": "storage.type.function.sas",
+          "name": "support.class.character-class.sas",
           "match": "(?i:\\b(HTML|PDF|RTF|EXCEL|EXCELXP|PACKAGE|_ALL_ CLOSE|DOCUMENT|ESCAPECHAR|EXCLUDE|GRAPHICS|LAYOUT ABSOLUTE|REGION|LAYOUT GRIDDED|REGION|LAYOUT END|PATH|PREFERENCES|PROCLABEL|PROCTITLE|RESULTS|SELECT|SHOW|TEXT|TRACE|USEGOPT|VERIFY|DECIMAL_ALIGN|LISTING( +close\b)?|NO_DECIMAL_ALIGN|OUTPUT)\\b)"
         },
         {
@@ -95,7 +95,7 @@
       "end": ";",
       "beginCaptures": {
         "0": {
-          "name": "storage.type.class.sas"
+          "name": "support.class.character-class.sas"
         }
       },
       "patterns": [
@@ -110,7 +110,7 @@
       "end": "(?i:\\b(run|(?=proc))\\b)",
       "endCaptures": {
         "0": {
-          "name": "storage.type.class.sas"
+          "name": "support.class.character-class.sas"
         }
       },
       "patterns": [
@@ -137,7 +137,7 @@
       "end": ";",
       "beginCaptures": {
         "2": {
-          "name": "storage.type.class.sas"
+          "name": "support.class.character-class.sas"
         },
         "3": {
           "name": "keyword.general.lookup.sas"
@@ -467,15 +467,15 @@
       "end": "(?i:\\b(quit *;))",
       "beginCaptures": {
         "1": {
-          "name": "storage.type.class.sas"
+          "name": "support.class.character-class.sas"
         },
         "3": {
-          "name": "storage.type.function.sas"
+          "name": "support.class.character-class.sas"
         }
       },
       "endCaptures": {
         "0": {
-          "name": "storage.type.class.sas"
+          "name": "support.class.character-class.sas"
         }
       },
       "patterns": [
@@ -507,12 +507,12 @@
       "end": "(?i:\\b(run|quit)\\b)",
       "beginCaptures": {
         "0": {
-          "name": "storage.type.class.sas"
+          "name": "support.class.character-class.sas"
         }
       },
       "endCaptures": {
         "0": {
-          "name": "storage.type.class.sas"
+          "name": "support.class.character-class.sas"
         }
       },
       "patterns": [
@@ -634,7 +634,7 @@
         },
         {
           "match": "(?i:\\b(ACCESS|ACECLUS|ADAPTIVEREG|ALLELE|ANOM|ANOVA|APPEND|ARIMA|AUTHLIB|AUTOREG|BOM|BOXPLOT|BTL|CALENDAR|CALIS|CALLRFC|CANCORR|CANDISC|CAPABILITY|CASECONTROL|CATALOG|CATMOD|CHART|CIMPORT|CLP|CLUSTER|COMPARE|COMPUTAB|CONTENTS|CONVERT|COPY|CORR|CORRESP|COUNTREG|CPM|CPORT|CUSUM|DATASETS|DATASOURCE|DBF|DBLOAD|DEFINE_EVENT|DEFINE_TAGSET|DELETE|DIF|DISCRIM|DISPLAY|DISTANCE|DOCUMENT|DQMATCH|DQSCHEME|DQSRVADM|DQSRVSVC|DS2|DSTRANS|DTREE|ENTROPY|ESM|EXPAND|EXPLODE|EXPORT|FACTEX|FACTOR|FAMILY|FASTCLUS|FCMP|FEDSQL|FMM|FONTREG|FORECAST|FORMAT|FORMS|FREQ|FSBROWSE|FSEDIT|FSLETTER|FSLIST|FSVIEW|G3D|G3GRID|GA|GAM|GANNO|GANTT|GAREABAR|GBARLINE|GCHART|GCONTOUR|GDEVICE|GENESELECT|GENMOD|GEOCODE|GFONT|GIMPORT|GINSIDE|GKEYMAP|GKPI|GLIMMIX|GLM|GLMMOD|GLMPOWER|GLMSELECT|GMAP|GOPTIONS|GPLOT|GPROJECT|GRADAR|GREDUCE|GREMOVE|GREPLAY|GROOVY|GSLIDE|GTESTIT|GTILE|HADOOP|HAPLOTYPE|HP4SCORE|HPBIN|HPCLUS|HPCORR|HPCOUNTREG|HPDECIDE|HPDMDB|HPDS2|HPF|HPFARIMASPEC|HPFDIAGNOSE|HPFENGINE|HPFESMSPEC|HPFEVENTS|HPFEXMSPEC|HPFIDMSPEC|HPFOREST|HPFSELECT|HPFUCMSPEC|HPGENSELECT|HPIMPUTE|HPLMIXED|HPLOGISTIC|HPLSO|HPMIXED|HPNEURAL|HPNLIN|HPNLMOD|HPQLIM|HPREDUCE|HPREG|HPSAMPLE|HPSEVERITY|HPSPLIT|HPSUMMARY|HPTMINE|HPTMSCORE|HTSNP|HTTP|IML|IMPORT|IMSTAT|INBREED|INFOMAPS|INTPOINT|ISHIKAWA|JSON|KDE|KRIGE2D|LATTICE|LIFEREG|LIFETEST|LOAN|LOESS|LOGISTIC|LP|MACONTROL|MACRO|MAPIMPORT|MCMC|MDC|MDS|MEANS|METADATA|MI|MIANALYZE|MIGRATE|MIXED|MODECLUS|MODEL|MULTTEST|NESTED|NETDRAW|NETFLOW|NLIN|NLMIXED|NLP|NPAR1WAY|ODS|OLAP|OPERATE|OPTEX|OPTGRAPH|OPTIONS|OPTLOAD|OPTLP|OPTMILP|OPTMODEL|OPTQP|OPTSAVE|ORTHOREG|PANEL|PARETO|PDLREG|PHREG|PLAN|PLM|PLOT|PLS|PM|PMENU|POWER|PRESENV|PRINCOMP|PRINQUAL|PRINT|PRINTTO|PROBIT|PROTO|PRTDEF|PRTEXP|PSMOOTH|PWENCODE|QDEVICE|QLIM|QUANTLIFE|QUANTREG|QUANTSELECT|RANK|REG|REGISTRY|RELIABILITY|REPORT|ROBUSTREG|RSREG|SCAPROC|SCORE|SEQDESIGN|SEQTEST|SERVER|SEVERITY|SGDESIGN|SGPANEL|SGPLOT|SGRENDER|SGSCATTER|SHEWHART|SIM2D|SIMILARITY|SIMLIN|SIMNORMAL|SOAP|SORT|SPECTRA|SQL|STANDARD|STATESPACE|STATGRAPH|STDIZE|STDRATE|STEPDISC|STP|STREAM|SUMMARY|SURVEYFREQ|SURVEYLOGISTIC|SURVEYMEANS|SURVEYPHREG|SURVEYREG|SURVEYSELECT|SYSLIN|TABULATE|TCALIS|TEMPLATE|TIMEID|TIMEPLOT|TIMESERIES|TPSPLINE|TRANS|TRANSPOSE|TRANSREG|TRANTAB|TREE|TSCSREG|TTEST|UCM|UNIVARIATE|VARCLUS|VARCOMP|VARIOGRAM|VARMAX|X11|X12|XSL)\\b)",
-          "name": "storage.type.function.sas"
+          "name": "support.class.character-class.sas"
         }
       ]
     },
@@ -643,7 +643,7 @@
       "end": "(?i:\\b((?=run))\\b)",
       "beginCaptures": {
         "0": {
-          "name": "storage.type.function.sas"
+          "name": "support.class.character-class.sas"
         }
       },
       "patterns": [
@@ -675,7 +675,7 @@
       "end": "(?i:\\b((?=run))\\b)",
       "beginCaptures": {
         "0": {
-          "name": "storage.type.function.sas"
+          "name": "support.class.character-class.sas"
         }
       },
       "patterns": [
@@ -1541,7 +1541,7 @@
       "end": "(?i:\\b((?=run))\\b)",
       "beginCaptures": {
         "0": {
-          "name": "storage.type.function.sas"
+          "name": "support.class.character-class.sas"
         }
       },
       "patterns": [
@@ -1588,7 +1588,7 @@
       "end": "(?i:\\b((?=run))\\b)",
       "beginCaptures": {
         "0": {
-          "name": "storage.type.function.sas"
+          "name": "support.class.character-class.sas"
         }
       },
       "patterns": [
@@ -1679,7 +1679,7 @@
       "end": "(?i:\\b((?=run))\\b)",
       "beginCaptures": {
         "0": {
-          "name": "storage.type.function.sas"
+          "name": "support.class.character-class.sas"
         }
       },
       "patterns": [
@@ -1950,7 +1950,7 @@
       "end": "(?i:\\b((?=run))\\b)",
       "beginCaptures": {
         "0": {
-          "name": "storage.type.function.sas"
+          "name": "support.class.character-class.sas"
         }
       },
       "patterns": [
@@ -2176,7 +2176,7 @@
       "end": "(?i:\\b((?=run))\\b)",
       "beginCaptures": {
         "0": {
-          "name": "storage.type.function.sas"
+          "name": "support.class.character-class.sas"
         }
       },
       "patterns": [
@@ -2223,7 +2223,7 @@
       "end": "(?i:\\b((?=run))\\b)",
       "beginCaptures": {
         "0": {
-          "name": "storage.type.function.sas"
+          "name": "support.class.character-class.sas"
         }
       },
       "patterns": [
@@ -2285,7 +2285,7 @@
       "end": "(?i:\\b((?=run))\\b)",
       "beginCaptures": {
         "0": {
-          "name": "storage.type.function.sas"
+          "name": "support.class.character-class.sas"
         }
       },
       "patterns": [
@@ -2332,7 +2332,7 @@
       "end": "(?i:\\b((?=run))\\b)",
       "beginCaptures": {
         "0": {
-          "name": "storage.type.function.sas"
+          "name": "support.class.character-class.sas"
         }
       },
       "patterns": [
@@ -2676,7 +2676,7 @@
       "end": "(?i:\\b((?=run))\\b)",
       "beginCaptures": {
         "0": {
-          "name": "storage.type.function.sas"
+          "name": "support.class.character-class.sas"
         }
       },
       "patterns": [
@@ -2796,7 +2796,7 @@
       "end": "(?i:\\b((?=run))\\b)",
       "beginCaptures": {
         "0": {
-          "name": "storage.type.function.sas"
+          "name": "support.class.character-class.sas"
         }
       },
       "patterns": [
@@ -2858,7 +2858,7 @@
       "end": "(?i:\\b((?=run))\\b)",
       "beginCaptures": {
         "0": {
-          "name": "storage.type.function.sas"
+          "name": "support.class.character-class.sas"
         }
       },
       "patterns": [
@@ -2920,7 +2920,7 @@
       "end": "(?i:\\b((?=run))\\b)",
       "beginCaptures": {
         "0": {
-          "name": "storage.type.function.sas"
+          "name": "support.class.character-class.sas"
         }
       },
       "patterns": [
@@ -2952,7 +2952,7 @@
       "end": "(?i:\\b((?=run))\\b)",
       "beginCaptures": {
         "0": {
-          "name": "storage.type.function.sas"
+          "name": "support.class.character-class.sas"
         }
       },
       "patterns": [
@@ -2984,7 +2984,7 @@
       "end": "(?i:\\b((?=run))\\b)",
       "beginCaptures": {
         "0": {
-          "name": "storage.type.function.sas"
+          "name": "support.class.character-class.sas"
         }
       },
       "patterns": [
@@ -3121,7 +3121,7 @@
       "end": "(?i:\\b((?=run))\\b)",
       "beginCaptures": {
         "0": {
-          "name": "storage.type.function.sas"
+          "name": "support.class.character-class.sas"
         }
       },
       "patterns": [
@@ -3278,7 +3278,7 @@
       "end": "(?i:\\b((?=run))\\b)",
       "beginCaptures": {
         "0": {
-          "name": "storage.type.function.sas"
+          "name": "support.class.character-class.sas"
         }
       },
       "patterns": [
@@ -3325,7 +3325,7 @@
       "end": "(?i:\\b((?=run))\\b)",
       "beginCaptures": {
         "0": {
-          "name": "storage.type.function.sas"
+          "name": "support.class.character-class.sas"
         }
       },
       "patterns": [
@@ -3446,7 +3446,7 @@
       "end": "(?i:\\b((?=run))\\b)",
       "beginCaptures": {
         "0": {
-          "name": "storage.type.function.sas"
+          "name": "support.class.character-class.sas"
         }
       },
       "patterns": [
@@ -3493,7 +3493,7 @@
       "end": "(?i:\\b((?=run))\\b)",
       "beginCaptures": {
         "0": {
-          "name": "storage.type.function.sas"
+          "name": "support.class.character-class.sas"
         }
       },
       "patterns": [
@@ -3543,7 +3543,7 @@
       "end": "(?i:\\b((?=run))\\b)",
       "beginCaptures": {
         "0": {
-          "name": "storage.type.function.sas"
+          "name": "support.class.character-class.sas"
         }
       },
       "patterns": [
@@ -3575,7 +3575,7 @@
       "end": "(?i:\\b((?=quit))\\b)",
       "beginCaptures": {
         "0": {
-          "name": "storage.type.function.sas"
+          "name": "support.class.character-class.sas"
         }
       },
       "patterns": [
@@ -3607,7 +3607,7 @@
       "end": "(?i:\\b((?=run))\\b)",
       "beginCaptures": {
         "0": {
-          "name": "storage.type.function.sas"
+          "name": "support.class.character-class.sas"
         }
       },
       "patterns": [
@@ -3639,7 +3639,7 @@
       "end": "(?i:\\b((?=quit))\\b)",
       "beginCaptures": {
         "0": {
-          "name": "storage.type.function.sas"
+          "name": "support.class.character-class.sas"
         }
       },
       "patterns": [
@@ -3657,7 +3657,7 @@
       "end": "(?i:\\b((?=run))\\b)",
       "beginCaptures": {
         "0": {
-          "name": "storage.type.function.sas"
+          "name": "support.class.character-class.sas"
         }
       },
       "patterns": [
@@ -3675,7 +3675,7 @@
       "end": "(?i:\\b((?=run))\\b)",
       "beginCaptures": {
         "0": {
-          "name": "storage.type.function.sas"
+          "name": "support.class.character-class.sas"
         }
       },
       "patterns": [
@@ -3796,7 +3796,7 @@
       "end": "(?i:\\b((?=run))\\b)",
       "beginCaptures": {
         "0": {
-          "name": "storage.type.function.sas"
+          "name": "support.class.character-class.sas"
         }
       },
       "patterns": [
@@ -3853,7 +3853,7 @@
       "end": "(?i:\\b((?=run))\\b)",
       "beginCaptures": {
         "0": {
-          "name": "storage.type.function.sas"
+          "name": "support.class.character-class.sas"
         }
       },
       "patterns": [
@@ -3900,7 +3900,7 @@
       "end": "(?i:\\b((?=run))\\b)",
       "beginCaptures": {
         "0": {
-          "name": "storage.type.function.sas"
+          "name": "support.class.character-class.sas"
         }
       },
       "patterns": [
@@ -3947,7 +3947,7 @@
       "end": "(?i:\\b((?=run))\\b)",
       "beginCaptures": {
         "0": {
-          "name": "storage.type.function.sas"
+          "name": "support.class.character-class.sas"
         }
       },
       "patterns": [
@@ -3994,7 +3994,7 @@
       "end": "(?i:\\b((?=run))\\b)",
       "beginCaptures": {
         "0": {
-          "name": "storage.type.function.sas"
+          "name": "support.class.character-class.sas"
         }
       },
       "patterns": [
