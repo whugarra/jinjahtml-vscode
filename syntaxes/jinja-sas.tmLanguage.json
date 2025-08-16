@@ -65,16 +65,19 @@
     "specialparser": {
       "patterns": [
         {
+          "include": "#block_comment_string"
+        },
+        {
+          "include": "#line_comment_string"
+        },
+        {
           "include": "#double_quoted_string"
         },
         {
           "include": "#single_quoted_string"
         },
         {
-          "include": "#block_comment_string"
-        },
-        {
-          "include": "#line_comment_string"
+          "include": "#sas_macro_quotes_string"
         },
         {
           "include": "#macro"
@@ -110,7 +113,7 @@
       "end": "(?i:\\b(run|(?=proc))\\b)",
       "endCaptures": {
         "0": {
-          "name": "support.class.character-class.sas"
+          "name": "support.function.character-class.sas"
         }
       },
       "patterns": [
@@ -137,7 +140,7 @@
       "end": ";",
       "beginCaptures": {
         "2": {
-          "name": "support.class.character-class.sas"
+          "name": "support.function.character-class.sas"
         },
         "3": {
           "name": "keyword.general.lookup.sas"
@@ -306,6 +309,11 @@
       "begin": "(')",
       "end": "\\1"
     },
+    "sas_macro_quotes_string": {
+      "begin": "(?i)%(?:quote|bquote|superq|nrbquote|nrquote|nrstr|str)",
+      "end": "\\)|(?=\\n)",
+      "name": "string.quoted.single.sas"
+    },
     "block_comment_string": {
       "name": "comment.blcok.sas",
       "begin": "(\\/\\*)",
@@ -320,12 +328,7 @@
           "name": "punctuation.definition.comment"
         }
       },
-      "patterns": [
-        {
-          "name": "constant.character.escape.sas",
-          "match": "\\\\."
-        }
-      ]
+      "patterns": []
     },
     "line_comment_string": {
       "name": "comment.line.sas",
@@ -336,12 +339,7 @@
           "name": "punctuation.definition.comment"
         }
       },
-      "patterns": [
-        {
-          "name": "constant.character.escape.sas",
-          "match": "\\\\."
-        }
-      ]
+      "patterns": []
     },
     "macrokeylist": {
       "match": "%(?i:(put|global|do|else|end|goto|if|let|to|until|symdel|while|leave|cancel|scan|then|local|str|eval|len|sysfunc|compres|left|lowcase|qlowcase|qcmpres|qleft|qlowcase|qtrim|sysrc|trim|verify|bquote|nrbquote|index|length|nrstr|qscan|qsubstr|substr|qsubstr|superq|symexsit|symglobal|symlocal|sysget|upcase|qupcase))\\b",
@@ -349,6 +347,27 @@
     },
     "macrovar": {
       "match": "(&+(?i:[a-z_]([a-z0-9_]+)?)(\\.+)?)\\b",
+      "name": "support.variable.macro.sas"
+    },
+    "macrodef": {
+      "begin": "(?i)^\\s*%macro\\s+([a-z_][a-z0-9_]*)\\s*(\\([^)]*\\))?",
+      "beginCaptures": {
+        "0": { "name": "support.class.character-class.sas" },
+        "1": { "name": "entity.name.function.sas.macro" }
+      },
+      "end": "(?=;)",
+      "patterns": [
+        {
+          "match": "([A-z_]\\w*)\\s*=",
+          "captures": {
+            "1": { "name": "variable.parameter.macro.sas" }
+          }
+        },
+        { "include": "#specialparser" }
+      ]
+    },
+    "macromend": {
+      "match": "(?i)^\\s*%mend\\b.*;",
       "name": "support.class.character-class.sas"
     },
     "macro": {
@@ -360,20 +379,20 @@
           "include": "#macrokeylist"
         },
         {
+          "include": "#macrodef"
+        },
+        {
+          "include": "#macromend"
+        },
+        {
           "begin": "(%(?i:[a-z_]\\w*))\\s*\\(",
           "end": "\\)",
           "beginCaptures": {
             "0": {
-              "name": "support.class.character-class.sas"
+              "name": "support.function.character-class.sas"
             }
           },
           "patterns": [
-            {
-              "include": "#double_quoted_string"
-            },
-            {
-              "include": "#single_quoted_string"
-            },
             {
               "match": "([A-z_]\\w*)\\s*=",
               "captures": {
@@ -383,39 +402,7 @@
               }
             },
             {
-              "include": "#macrovar"
-            },
-            {
-              "include": "#macrokeylist"
-            },
-            {
-              "begin": "\\(",
-              "end": "\\)",
-              "patterns": [
-                {
-                  "include": "#double_quoted_string"
-                },
-                {
-                  "include": "#single_quoted_string"
-                },
-                {
-                  "include": "#balanced_bracket_macro"
-                },
-                {
-                  "include": "#macrovar"
-                },
-                {
-                  "include": "#macrokeylist"
-                },
-                {
-                  "match": "(%(?i:[a-z_]\\w*))",
-                  "name": "support.class.character-class.sas"
-                }
-              ]
-            },
-            {
-              "match": "(%(?i:[a-z_]\\w*))",
-              "name": "support.class.character-class.sas"
+              "include": "#specialparser"
             }
           ]
         },
@@ -434,6 +421,9 @@
         },
         {
           "include": "#single_quoted_string"
+        },
+        {
+          "include": "#sas_macro_quotes_string"
         },
         {
           "include": "#balanced_bracket_macro"
@@ -467,15 +457,15 @@
       "end": "(?i:\\b(quit *;))",
       "beginCaptures": {
         "1": {
-          "name": "support.class.character-class.sas"
+          "name": "support.function.character-class.sas"
         },
         "3": {
-          "name": "support.class.character-class.sas"
+          "name": "support.function.character-class.sas"
         }
       },
       "endCaptures": {
         "0": {
-          "name": "support.class.character-class.sas"
+          "name": "support.function.character-class.sas"
         }
       },
       "patterns": [
@@ -507,12 +497,12 @@
       "end": "(?i:\\b(run|quit)\\b)",
       "beginCaptures": {
         "0": {
-          "name": "support.class.character-class.sas"
+          "name": "support.function.character-class.sas"
         }
       },
       "endCaptures": {
         "0": {
-          "name": "support.class.character-class.sas"
+          "name": "support.function.character-class.sas"
         }
       },
       "patterns": [
@@ -634,7 +624,7 @@
         },
         {
           "match": "(?i:\\b(ACCESS|ACECLUS|ADAPTIVEREG|ALLELE|ANOM|ANOVA|APPEND|ARIMA|AUTHLIB|AUTOREG|BOM|BOXPLOT|BTL|CALENDAR|CALIS|CALLRFC|CANCORR|CANDISC|CAPABILITY|CASECONTROL|CATALOG|CATMOD|CHART|CIMPORT|CLP|CLUSTER|COMPARE|COMPUTAB|CONTENTS|CONVERT|COPY|CORR|CORRESP|COUNTREG|CPM|CPORT|CUSUM|DATASETS|DATASOURCE|DBF|DBLOAD|DEFINE_EVENT|DEFINE_TAGSET|DELETE|DIF|DISCRIM|DISPLAY|DISTANCE|DOCUMENT|DQMATCH|DQSCHEME|DQSRVADM|DQSRVSVC|DS2|DSTRANS|DTREE|ENTROPY|ESM|EXPAND|EXPLODE|EXPORT|FACTEX|FACTOR|FAMILY|FASTCLUS|FCMP|FEDSQL|FMM|FONTREG|FORECAST|FORMAT|FORMS|FREQ|FSBROWSE|FSEDIT|FSLETTER|FSLIST|FSVIEW|G3D|G3GRID|GA|GAM|GANNO|GANTT|GAREABAR|GBARLINE|GCHART|GCONTOUR|GDEVICE|GENESELECT|GENMOD|GEOCODE|GFONT|GIMPORT|GINSIDE|GKEYMAP|GKPI|GLIMMIX|GLM|GLMMOD|GLMPOWER|GLMSELECT|GMAP|GOPTIONS|GPLOT|GPROJECT|GRADAR|GREDUCE|GREMOVE|GREPLAY|GROOVY|GSLIDE|GTESTIT|GTILE|HADOOP|HAPLOTYPE|HP4SCORE|HPBIN|HPCLUS|HPCORR|HPCOUNTREG|HPDECIDE|HPDMDB|HPDS2|HPF|HPFARIMASPEC|HPFDIAGNOSE|HPFENGINE|HPFESMSPEC|HPFEVENTS|HPFEXMSPEC|HPFIDMSPEC|HPFOREST|HPFSELECT|HPFUCMSPEC|HPGENSELECT|HPIMPUTE|HPLMIXED|HPLOGISTIC|HPLSO|HPMIXED|HPNEURAL|HPNLIN|HPNLMOD|HPQLIM|HPREDUCE|HPREG|HPSAMPLE|HPSEVERITY|HPSPLIT|HPSUMMARY|HPTMINE|HPTMSCORE|HTSNP|HTTP|IML|IMPORT|IMSTAT|INBREED|INFOMAPS|INTPOINT|ISHIKAWA|JSON|KDE|KRIGE2D|LATTICE|LIFEREG|LIFETEST|LOAN|LOESS|LOGISTIC|LP|MACONTROL|MACRO|MAPIMPORT|MCMC|MDC|MDS|MEANS|METADATA|MI|MIANALYZE|MIGRATE|MIXED|MODECLUS|MODEL|MULTTEST|NESTED|NETDRAW|NETFLOW|NLIN|NLMIXED|NLP|NPAR1WAY|ODS|OLAP|OPERATE|OPTEX|OPTGRAPH|OPTIONS|OPTLOAD|OPTLP|OPTMILP|OPTMODEL|OPTQP|OPTSAVE|ORTHOREG|PANEL|PARETO|PDLREG|PHREG|PLAN|PLM|PLOT|PLS|PM|PMENU|POWER|PRESENV|PRINCOMP|PRINQUAL|PRINT|PRINTTO|PROBIT|PROTO|PRTDEF|PRTEXP|PSMOOTH|PWENCODE|QDEVICE|QLIM|QUANTLIFE|QUANTREG|QUANTSELECT|RANK|REG|REGISTRY|RELIABILITY|REPORT|ROBUSTREG|RSREG|SCAPROC|SCORE|SEQDESIGN|SEQTEST|SERVER|SEVERITY|SGDESIGN|SGPANEL|SGPLOT|SGRENDER|SGSCATTER|SHEWHART|SIM2D|SIMILARITY|SIMLIN|SIMNORMAL|SOAP|SORT|SPECTRA|SQL|STANDARD|STATESPACE|STATGRAPH|STDIZE|STDRATE|STEPDISC|STP|STREAM|SUMMARY|SURVEYFREQ|SURVEYLOGISTIC|SURVEYMEANS|SURVEYPHREG|SURVEYREG|SURVEYSELECT|SYSLIN|TABULATE|TCALIS|TEMPLATE|TIMEID|TIMEPLOT|TIMESERIES|TPSPLINE|TRANS|TRANSPOSE|TRANSREG|TRANTAB|TREE|TSCSREG|TTEST|UCM|UNIVARIATE|VARCLUS|VARCOMP|VARIOGRAM|VARMAX|X11|X12|XSL)\\b)",
-          "name": "support.class.character-class.sas"
+          "name": "support.function.character-class.sas"
         }
       ]
     },
@@ -643,7 +633,7 @@
       "end": "(?i:\\b((?=run))\\b)",
       "beginCaptures": {
         "0": {
-          "name": "support.class.character-class.sas"
+          "name": "support.function.character-class.sas"
         }
       },
       "patterns": [
@@ -675,7 +665,7 @@
       "end": "(?i:\\b((?=run))\\b)",
       "beginCaptures": {
         "0": {
-          "name": "support.class.character-class.sas"
+          "name": "support.function.character-class.sas"
         }
       },
       "patterns": [
@@ -1541,7 +1531,7 @@
       "end": "(?i:\\b((?=run))\\b)",
       "beginCaptures": {
         "0": {
-          "name": "support.class.character-class.sas"
+          "name": "support.function.character-class.sas"
         }
       },
       "patterns": [
@@ -1588,7 +1578,7 @@
       "end": "(?i:\\b((?=run))\\b)",
       "beginCaptures": {
         "0": {
-          "name": "support.class.character-class.sas"
+          "name": "support.function.character-class.sas"
         }
       },
       "patterns": [
@@ -1679,7 +1669,7 @@
       "end": "(?i:\\b((?=run))\\b)",
       "beginCaptures": {
         "0": {
-          "name": "support.class.character-class.sas"
+          "name": "support.function.character-class.sas"
         }
       },
       "patterns": [
@@ -1950,7 +1940,7 @@
       "end": "(?i:\\b((?=run))\\b)",
       "beginCaptures": {
         "0": {
-          "name": "support.class.character-class.sas"
+          "name": "support.function.character-class.sas"
         }
       },
       "patterns": [
@@ -2176,7 +2166,7 @@
       "end": "(?i:\\b((?=run))\\b)",
       "beginCaptures": {
         "0": {
-          "name": "support.class.character-class.sas"
+          "name": "support.function.character-class.sas"
         }
       },
       "patterns": [
@@ -2223,7 +2213,7 @@
       "end": "(?i:\\b((?=run))\\b)",
       "beginCaptures": {
         "0": {
-          "name": "support.class.character-class.sas"
+          "name": "support.function.character-class.sas"
         }
       },
       "patterns": [
@@ -2285,7 +2275,7 @@
       "end": "(?i:\\b((?=run))\\b)",
       "beginCaptures": {
         "0": {
-          "name": "support.class.character-class.sas"
+          "name": "support.function.character-class.sas"
         }
       },
       "patterns": [
@@ -2332,7 +2322,7 @@
       "end": "(?i:\\b((?=run))\\b)",
       "beginCaptures": {
         "0": {
-          "name": "support.class.character-class.sas"
+          "name": "support.function.character-class.sas"
         }
       },
       "patterns": [
@@ -2676,7 +2666,7 @@
       "end": "(?i:\\b((?=run))\\b)",
       "beginCaptures": {
         "0": {
-          "name": "support.class.character-class.sas"
+          "name": "support.function.character-class.sas"
         }
       },
       "patterns": [
@@ -2796,7 +2786,7 @@
       "end": "(?i:\\b((?=run))\\b)",
       "beginCaptures": {
         "0": {
-          "name": "support.class.character-class.sas"
+          "name": "support.function.character-class.sas"
         }
       },
       "patterns": [
@@ -2858,7 +2848,7 @@
       "end": "(?i:\\b((?=run))\\b)",
       "beginCaptures": {
         "0": {
-          "name": "support.class.character-class.sas"
+          "name": "support.function.character-class.sas"
         }
       },
       "patterns": [
@@ -2920,7 +2910,7 @@
       "end": "(?i:\\b((?=run))\\b)",
       "beginCaptures": {
         "0": {
-          "name": "support.class.character-class.sas"
+          "name": "support.function.character-class.sas"
         }
       },
       "patterns": [
@@ -2952,7 +2942,7 @@
       "end": "(?i:\\b((?=run))\\b)",
       "beginCaptures": {
         "0": {
-          "name": "support.class.character-class.sas"
+          "name": "support.function.character-class.sas"
         }
       },
       "patterns": [
@@ -2984,7 +2974,7 @@
       "end": "(?i:\\b((?=run))\\b)",
       "beginCaptures": {
         "0": {
-          "name": "support.class.character-class.sas"
+          "name": "support.function.character-class.sas"
         }
       },
       "patterns": [
@@ -3121,7 +3111,7 @@
       "end": "(?i:\\b((?=run))\\b)",
       "beginCaptures": {
         "0": {
-          "name": "support.class.character-class.sas"
+          "name": "support.function.character-class.sas"
         }
       },
       "patterns": [
@@ -3278,7 +3268,7 @@
       "end": "(?i:\\b((?=run))\\b)",
       "beginCaptures": {
         "0": {
-          "name": "support.class.character-class.sas"
+          "name": "support.function.character-class.sas"
         }
       },
       "patterns": [
@@ -3325,7 +3315,7 @@
       "end": "(?i:\\b((?=run))\\b)",
       "beginCaptures": {
         "0": {
-          "name": "support.class.character-class.sas"
+          "name": "support.function.character-class.sas"
         }
       },
       "patterns": [
@@ -3446,7 +3436,7 @@
       "end": "(?i:\\b((?=run))\\b)",
       "beginCaptures": {
         "0": {
-          "name": "support.class.character-class.sas"
+          "name": "support.function.character-class.sas"
         }
       },
       "patterns": [
@@ -3493,7 +3483,7 @@
       "end": "(?i:\\b((?=run))\\b)",
       "beginCaptures": {
         "0": {
-          "name": "support.class.character-class.sas"
+          "name": "support.function.character-class.sas"
         }
       },
       "patterns": [
@@ -3543,7 +3533,7 @@
       "end": "(?i:\\b((?=run))\\b)",
       "beginCaptures": {
         "0": {
-          "name": "support.class.character-class.sas"
+          "name": "support.function.character-class.sas"
         }
       },
       "patterns": [
@@ -3575,7 +3565,7 @@
       "end": "(?i:\\b((?=quit))\\b)",
       "beginCaptures": {
         "0": {
-          "name": "support.class.character-class.sas"
+          "name": "support.function.character-class.sas"
         }
       },
       "patterns": [
@@ -3607,7 +3597,7 @@
       "end": "(?i:\\b((?=run))\\b)",
       "beginCaptures": {
         "0": {
-          "name": "support.class.character-class.sas"
+          "name": "support.function.character-class.sas"
         }
       },
       "patterns": [
@@ -3639,7 +3629,7 @@
       "end": "(?i:\\b((?=quit))\\b)",
       "beginCaptures": {
         "0": {
-          "name": "support.class.character-class.sas"
+          "name": "support.function.character-class.sas"
         }
       },
       "patterns": [
@@ -3657,7 +3647,7 @@
       "end": "(?i:\\b((?=run))\\b)",
       "beginCaptures": {
         "0": {
-          "name": "support.class.character-class.sas"
+          "name": "support.function.character-class.sas"
         }
       },
       "patterns": [
@@ -3675,7 +3665,7 @@
       "end": "(?i:\\b((?=run))\\b)",
       "beginCaptures": {
         "0": {
-          "name": "support.class.character-class.sas"
+          "name": "support.function.character-class.sas"
         }
       },
       "patterns": [
@@ -3796,7 +3786,7 @@
       "end": "(?i:\\b((?=run))\\b)",
       "beginCaptures": {
         "0": {
-          "name": "support.class.character-class.sas"
+          "name": "support.function.character-class.sas"
         }
       },
       "patterns": [
@@ -3853,7 +3843,7 @@
       "end": "(?i:\\b((?=run))\\b)",
       "beginCaptures": {
         "0": {
-          "name": "support.class.character-class.sas"
+          "name": "support.function.character-class.sas"
         }
       },
       "patterns": [
@@ -3900,7 +3890,7 @@
       "end": "(?i:\\b((?=run))\\b)",
       "beginCaptures": {
         "0": {
-          "name": "support.class.character-class.sas"
+          "name": "support.function.character-class.sas"
         }
       },
       "patterns": [
@@ -3947,7 +3937,7 @@
       "end": "(?i:\\b((?=run))\\b)",
       "beginCaptures": {
         "0": {
-          "name": "support.class.character-class.sas"
+          "name": "support.function.character-class.sas"
         }
       },
       "patterns": [
@@ -3994,7 +3984,7 @@
       "end": "(?i:\\b((?=run))\\b)",
       "beginCaptures": {
         "0": {
-          "name": "support.class.character-class.sas"
+          "name": "support.function.character-class.sas"
         }
       },
       "patterns": [
