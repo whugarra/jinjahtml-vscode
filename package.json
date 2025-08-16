@@ -524,6 +524,19 @@
           ".sas.jinja2"
         ],
         "configuration": "./language-configuration.json"
+      },
+      {
+        "id": "jinja-r",
+        "aliases": [
+          "Jinja R",
+          "jinja-r"
+        ],
+        "extensions": [
+          ".r.j2",
+          ".r.jinja",
+          ".r.jinja2"
+        ],
+        "configuration": "./language-configuration.json"
       }
     ],
     "htmlLanguageParticipants": [
@@ -677,6 +690,11 @@
         "language": "jinja-sas",
         "scopeName": "source.sas.jinja",
         "path": "./syntaxes/jinja-sas.tmLanguage.json"
+      },
+      {
+        "language": "jinja-r",
+        "scopeName": "source.r.jinja",
+        "path": "./syntaxes/jinja-r.tmLanguage.json"
       }
     ],
     "snippets": [
@@ -786,6 +804,9 @@
       },
       {
         "language": "jinja-sas"
+      },
+      {
+        "language": "jinja-r"
       }
     ]
   }

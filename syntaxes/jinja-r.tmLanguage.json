@@ -1,0 +1,13 @@
+{
+  "name": "jinja-r",
+  "scopeName": "source.r.jinja",
+  "comment": "Jinja R Templates",
+  "patterns": [
+    {
+      "include": "source.jinja"
+    },
+    {
+      "include": "source.r"
+    }
+  ]
+}

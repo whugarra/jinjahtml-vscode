@@ -1,0 +1,11 @@
+
+# Jinja template variables: numbers is a list of numbers
+{% set numbers = [1, 2, 3, 4, 5] %}
+
+# Auto-generated R code
+numbers <- c({{ numbers | join(', ') }})
+mean_value <- mean(numbers)
+sd_value <- sd(numbers)
+
+cat("Mean:", mean_value, "\n")
+cat("Standard deviation:", sd_value, "\n")
